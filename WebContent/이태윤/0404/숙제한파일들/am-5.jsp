@@ -91,7 +91,6 @@
                 </select>
             </td>
         </tr>
-        </tr>
         <tr>
             <td>메모</td>
             <td>
