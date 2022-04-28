@@ -17,7 +17,7 @@
    Connection con = ds.getConnection();
    
       //3. 연결 설정
-   String sql = "select * from login order by id";
+   String sql = "select * from mbtilogin order by id";
    Statement stmt = con.createStatement();
    ResultSet rs = stmt.executeQuery(sql);
 %>
@@ -37,9 +37,14 @@
 <div class="container">
    <table class="table table-bordered">
       <tr>
-         <th>id</th>
-         <th>name</th>
-         <th>pwd</th>
+         <th>아이디</th>
+         <th>비밀번호</th>
+         <th>이름</th>
+         <th>성격유형</th>
+         <th>생년월일</th>
+         <th>전화번호</th>
+         <th>이메일</th>
+         <th>성별</th>
       </tr>
       <tr>
 <%   
@@ -48,10 +53,22 @@
       String id = rs.getString("id");
       String pwd = rs.getString("pwd");
       String name = rs.getString("name");
+      String chacter = rs.getString("chacter");
+      String udate = rs.getString("udate");
+      String pNumber = rs.getString("pNumber");
+      String email = rs.getString("email");
+      String gender = rs.getString("gender");
+      
+      
 %>
          <td><a href="updateForm.jsp?id=<%=id %>"><%=id %></a></td>
-         <td><%=name %></td>
          <td><%=pwd %></td>
+         <td><%=name %></td>
+         <td><%=chacter %></td>
+         <td><%=udate %></td>
+         <td><%=pNumber %></td>
+         <td><%=email %></td>
+         <td><%=gender %></td>
       </tr>
 <%
    }

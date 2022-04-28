@@ -29,7 +29,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-   <h2 style = "text-align:center">회원 목록 조희</h2>
+   <h2 style = "text-align:center">회원 목록 조회</h2>
 <div class="container">
    <table class="table table-bordered">
       <tr>

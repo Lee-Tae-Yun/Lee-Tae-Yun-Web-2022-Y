@@ -17,7 +17,7 @@
    Connection con = ds.getConnection();
    
       //3. 연결 설정
-   String sql = "select * from login order by id";
+   String sql = "select * from mbtiborad order by num";
    Statement stmt = con.createStatement();
    ResultSet rs = stmt.executeQuery(sql);
 %>
@@ -25,7 +25,7 @@
 <html>
 <head>
    <meta charset="UTF-8">
-   <title>login 데이터 조회</title>
+   <title>borad 데이터 조회</title>
    <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
@@ -33,25 +33,37 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-   <h2 style = "text-align:center">회원 목록 조회</h2>
+   <h2 style = "text-align:center">게시판 목록 조회</h2>
 <div class="container">
    <table class="table table-bordered">
       <tr>
-         <th>id</th>
-         <th>name</th>
-         <th>pwd</th>
+         <th>게시판번호</th>
+         <th>게시판 유형</th>
+         <th>게시판 제목</th>
+         <th>작성날짜</th>
+         <th>조회수</th>
+         <th>글쓴이</th>
       </tr>
       <tr>
 <%   
       //4. 반환데이터 출력
    while(rs.next()){
-      String id = rs.getString("id");
-      String pwd = rs.getString("pwd");
-      String name = rs.getString("name");
+      String num = rs.getString("num");
+      String btitle = rs.getString("btitle");
+      String bname = rs.getString("bname");
+      String bdate = rs.getString("bdate");
+      String boradview = rs.getString("boradview");
+      String boradtype = rs.getString("boradtype");
+
 %>
-         <td><a href="updateForm.jsp?id=<%=id %>"><%=id %></a></td>
-         <td><%=name %></td>
-         <td><%=pwd %></td>
+         <td><%=num %></td>
+         <td><%=boradtype %></td>
+         <td><a href="boradForm.jsp?btitle=<%=btitle %>"><%=btitle %></a></td>
+         <td><%=bdate %></td>
+         <td><%=boradview %></td>
+         <td><%=bname %></td>
+         
+
       </tr>
 <%
    }
