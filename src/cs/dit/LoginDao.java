@@ -2,7 +2,9 @@ package cs.dit;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -16,6 +18,7 @@ import javax.sql.DataSource;
  * 변경이력 : 
  * 	-getConnection : dbcp에서 Connection 얻어오기
  *  -list() : login테이블에서 가져온 레코드를 Dto로 만들어 전달
+ *  -checkUesr() : 유효한 사용자인지 아닌지 판별하는 메소드
  */
 
 public class LoginDao {
@@ -50,6 +53,88 @@ public class LoginDao {
 					   e.printStackTrace();
 				   }
 		  
+	   }
+	   //list() : 데이터 조회
+	   //메소드 작성 시 고려사항
+	   //1. public / private
+	   //2. 반환 데이터 (output)
+	   //3. 입력 데이터 (input)
+	   
+	   public ArrayList<LoginDto> list(){
+		   
+		   ArrayList<LoginDto> dtos = new ArrayList<LoginDto>();
+		   
+		   String sql = "select id,name,pwd from login";
+		   
+		   try(
+				   
+				   Connection con = getConnection(); //커넥션 얻기
+				   Statement stmt = con.createStatement(); //
+				   
+			  )
+		   {
+			   
+			  ResultSet rs = stmt.executeQuery(sql);
+			  while(rs.next()) {
+				  //1. 레코드셋에서 데이터를 가져온다.
+		
+				  String id = rs.getString("id");
+				  String name = rs.getString("name");
+				  String pwd = rs.getString("pwd");
+				  
+				  //2. 그 데이터들을 LoginDto로 만든다.
+				  
+				  LoginDto dto = new LoginDto(id,name,pwd);
+				  
+				  //3. 그 LoginDto를 배열(ArrayList)에 추가한다.
+				  dtos.add(dto);
+			  }
+				  
+				  
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		   
+		   
+		   return dtos;
+	   }
+	   
+	   //메소드 작성 시 고려사항
+	   //1. public / private
+	   //2. 반환 데이터 (output)
+	   //3. 입력 데이터 (input)
+	   public int checkUser(String id, String pwd) {
+		   	String sql = "select pwd from login where id=? and pwd=?";
+		   	int check = 0;
+		   
+		   try(
+				   
+				   Connection con = getConnection(); //커넥션 얻기
+				   PreparedStatement pstmt = con.prepareStatement(sql); //실행 준비
+
+			  )
+				   
+		   {
+			   pstmt.setNString(1, id);
+			   pstmt.setNString(2, pwd);
+			  try (ResultSet rs = pstmt.executeQuery();){
+				  if (rs.next()) {
+					  check = 1;
+				  }
+				  else {
+					  check = 0;
+				  }
+			  }
+			  catch (Exception e) {
+					e.printStackTrace();
+				}
+				  
+				  
+		   	}catch (Exception e) {
+					e.printStackTrace();
+				}
+				   		   
+		   return check;
 	   }
 
 }

@@ -11,6 +11,7 @@ public class LoginDto {
 	private String id;
 	private String pwd;
 	private String name;
+	
 	public String getId() {
 		return id;
 	}
@@ -30,7 +31,7 @@ public class LoginDto {
 		this.name = name;
 	}
 	
-	public LoginDto(String id,String pwd,String name) {
+	public LoginDto(String id,String name,String pwd) {
 		this.id = id;
 		this.pwd = pwd;
 		this.name = name;
