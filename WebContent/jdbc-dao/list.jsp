@@ -3,11 +3,13 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-  
 %>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
    <%
    	LoginDao dao = new LoginDao();
     ArrayList<LoginDto> dtos = dao.list();
+    pageContext.setAttribute("dtos",dtos);
 %>
 <!DOCTYPE html>
 <html>
@@ -41,6 +43,13 @@
 <%
 	}
 %>
+		<c:forEach var = "dto" items ="${list}">
+		 	<tr>
+				<td><a href="updateForm.jsp?id=${dtos.id}">${dtos.id}</a></td>
+				<td>${dtos.name}</td>
+		    	<td>${dtos.pwd}</td>
+		     </tr>
+		</c:forEach>     
    </table>
 </div>
 
