@@ -35,6 +35,7 @@
     <textarea cols="50" rows="20" name="borad"></textarea>
     <p>
     <button type="submit" class="btn btn-primary">저장</button>
+    <button type="button" onclick="location.href='listborad.jsp'">뒤로가기</button>
   </form>
 </div>
 

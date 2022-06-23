@@ -20,6 +20,7 @@
    String sql = "select * from mbtiborad order by num";
    Statement stmt = con.createStatement();
    ResultSet rs = stmt.executeQuery(sql);
+   
 %>
 <!DOCTYPE html>
 <html>
@@ -35,7 +36,7 @@
 <body>
    <h2 style = "text-align:center">게시판 목록 조회</h2>
 <div class="container">
-   <table class="table table-bordered">
+   <table class="table table-dark table-hover">
       <tr>
          <th>게시판번호</th>
          <th>게시판 유형</th>
@@ -78,6 +79,7 @@
       con.close();
    
    %>
+   <button type="button" onclick="location.href='index.jsp'">뒤로가기</button>
 </body>
 </html>
 

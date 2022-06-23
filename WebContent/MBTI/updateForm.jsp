@@ -106,7 +106,8 @@ else{ %>
 <%}%>
     <button type="submit" class="btn btn-primary">저장</button>
     <button type="button" class="btn btn-primary" onclick="location.href='deldatePro.jsp?id=<%=id%>'">삭제</button>
-    <button type="button" class="btn btn-primary" onclick="location.herf='list.jsp'">조회</button>
+    <button type="button" class="btn btn-primary" onclick="location.href='list.jsp'">조회</button>
+
   </form>
 </div>
 

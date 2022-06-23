@@ -35,7 +35,7 @@
 <body>
    <h2 style = "text-align:center">회원 목록 조회</h2>
 <div class="container">
-   <table class="table table-bordered">
+   <table class="table table-dark table-hover">
       <tr>
          <th>아이디</th>
          <th>비밀번호</th>
@@ -83,6 +83,7 @@
       con.close();
    
    %>
+   <button type="button" onclick="location.href='index.jsp'">뒤로가기</button>
 </body>
 </html>
 

@@ -28,6 +28,11 @@
    String boradview = "";
    String boradtype = "";
    String borad = "";
+   
+
+   
+   
+
 
 
    if(rs.next()){

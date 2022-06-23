@@ -38,7 +38,7 @@
    pstmt.setString(2, btitle);
    pstmt.setString(3, bname);
    pstmt.setString(4, null);
-   pstmt.setString(5, null);
+   pstmt.setInt(5, 0);
    pstmt.setString(6, boradtype);
    pstmt.setString(7, borad);
    pstmt.setString(8, null);

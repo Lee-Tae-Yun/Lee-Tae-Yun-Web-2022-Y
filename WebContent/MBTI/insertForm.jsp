@@ -52,6 +52,7 @@
     
 
     <button type="submit" class="btn btn-primary">전송</button>
+    <button type="button" onclick="location.href='index.jsp'">뒤로가기</button>
   </form>
 </div>
 
